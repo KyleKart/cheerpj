@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Old Minecraft Upload Test</title>
+  <meta charset="UTF-8">
+  <script src="https://cjrtnc.leaningtech.com/4.2/loader.js"></script>
+  <style>
+    body {
+      background: #111;
+      color: white;
+      font-family: monospace;
+      text-align: center;
+      padding-top: 40px;
+    }
+
+    .container {
+      background: #222;
+      display: inline-block;
+      padding: 20px;
+      border-radius: 12px;
+    }
+
+    #minecraft {
+      width: 854px;
+      height: 480px;
+      margin: auto;
+      border: 1px solid #555;
+      display: block;
+    }
+
+    input[type=file] {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <input type="file" id="jarInput" accept=".jar">
+  <div id="minecraft"></div>
+</div>
+
+<script>
+  async function startMinecraft(jarFile) {
+    await cheerpjInit();
+
+    cheerpjRunApplet(
+      "net.minecraft.client.Minecraft",
+      { file: jarFile },
+      document.getElementById("minecraft")
+    );
+  }
+
+  document.getElementById("jarInput").addEventListener("change", (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    startMinecraft(file);
+  });
+</script>
+
+</body>
+</html>
