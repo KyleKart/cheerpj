@@ -1,0 +1,39 @@
+<body>
+  <script src="https://cjrtnc.leaningtech.com/4.2/loader.js"></script>
+  <div id="display"></div>
+
+<style>
+    #display {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      z-index: 0;
+    }
+  </style>
+
+  <script>
+    (async () => {
+      const pathJarMinecraft = '/app/bcraft.jar';
+      const pathJarLibs = `/app/lwjgl/lwjgl-2.9.3.jar:/app/lwjgl/lwjgl_util-2.9.3.jar:${pathJarMinecraft}`;
+      const display = document.getElementById("display");
+
+      try {
+          await cheerpjInit({
+          javaProperties: ['java.library.path=/app/lwjgl/libraries/'],
+          libraries: { 'libGL.so.1': '/app/lwjgl/libraries/gl4es.wasm' },
+          enableX11: true,
+        });
+        cheerpjCreateDisplay(-1, -1, display);
+
+        await cheerpjRunMain("net.minecraft.client.Minecraft", pathJarLibs);
+      } catch (err) {
+        console.error(err);
+      }
+    })();
+  </script>
+</body>
