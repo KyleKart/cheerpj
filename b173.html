@@ -7,7 +7,7 @@
       try {
           await cheerpjInit({
           javaProperties: ['java.library.path=/app/cheerpj/lwjgl/libraries/'],
-          libraries: { '/cheerpj/lwjgl/libGL.so.1': '/app/cheerpj/lwjgl/libraries/gl4es.wasm' },
+          libraries: { 'libGL.so.1': '/app/cheerpj/lwjgl/libraries/gl4es.wasm' },
           enableX11: true,
         });
         cheerpjCreateDisplay(-1, -1, document.body);
