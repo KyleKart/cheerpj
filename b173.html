@@ -2,12 +2,12 @@
   <script src="https://cjrtnc.leaningtech.com/4.2/loader.js"></script>
   <script>
     (async () => {
-      const pathJarMinecraft = '/app/bcraft.jar';
-      const pathJarLibs = `/app/lwjgl/lwjgl-2.9.3.jar:/app/lwjgl/lwjgl_util-2.9.3.jar:${pathJarMinecraft}`;
+      const pathJarMinecraft = '/app/cheerpj/bcraft.jar';
+      const pathJarLibs = `/app/cheerpj/lwjgl/lwjgl-2.9.3.jar:/app/cheerpj/lwjgl/lwjgl_util-2.9.3.jar:${pathJarMinecraft}`;
       try {
           await cheerpjInit({
-          javaProperties: ['java.library.path=/app/lwjgl/libraries/'],
-          libraries: { 'libGL.so.1': '/app/lwjgl/libraries/gl4es.wasm' },
+          javaProperties: ['java.library.path=/app/cheerpj/lwjgl/libraries/'],
+          libraries: { 'libGL.so.1': '/app/cheerpj/lwjgl/libraries/gl4es.wasm' },
           enableX11: true,
         });
         cheerpjCreateDisplay(-1, -1, document.body);
